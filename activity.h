@@ -91,14 +91,17 @@ bool balancedBrackets(const string &expr) {
 		}
 		
 		if (expr[i] == ')'){
+			
 			if (ls.empty() == true){
 				return false;
 			}
+			
 			if (ls.top() == '('){
 				ls.pop();
 			}
+			
 			else {
-				break;
+				return false;
 			}
 		}
 
@@ -106,11 +109,13 @@ bool balancedBrackets(const string &expr) {
 			if (ls.empty() == true){
 				return false;
 			}
+			
 			if (ls.top() == '['){
 				ls.pop();
 			}
+			
 			else {
-				break;
+				return false;
 			}
 		}
 
@@ -118,17 +123,20 @@ bool balancedBrackets(const string &expr) {
 			if (ls.empty() == true){
 			return false;
 			}
+			
 			if (ls.top() == '{'){
 				ls.pop();
 			}
+			
 			else {
-				break;
+				return false;
 			}
 		}
 	}
 	if (ls.empty() == true){
 		return true;
 	}
+	
 	return false;
 }
 // =================================================================
@@ -142,6 +150,8 @@ bool balancedBrackets(const string &expr) {
 // @return a string with the equivalent expression in postfix
 //         notation
 // =================================================================
+
+//Complejidad O(n2)
 string convertInfixToPostfix(const string &expr) {
 	string ls;
 	queue<string> input;
